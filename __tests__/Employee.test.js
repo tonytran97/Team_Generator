@@ -1,20 +1,4 @@
-// class declaration with the following methods
-class Employee {
-    constructor(name, id, email) {
-        this.name = name;
-        this.id = id;
-        this.email = email;
-    }
-    getName() {
-        return this.name;
-    }
-    getID() {
-        return this.id;
-    }
-    getEmail() {
-        return this.email;
-    }
-}
+const Employee = require('../lib/Employee');
 
 // employee object has the three following properties 
 const employee = new Employee('Zoro', 1, 'zoro@onepiece.com'); 
