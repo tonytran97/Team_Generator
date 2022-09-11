@@ -4,6 +4,7 @@ const fs = require('fs');
 
 // template needs for this application
 const generateHTML = require('./src/template_helper');
+// const Manager = require('./lib/Manager');
 
 // array of prompts to be run through for the manager on initation of the application
 const startManager = [
