@@ -5,7 +5,7 @@ const fs = require('fs');
 // template needs for this application
 const generateHTML = require('./src/template_helper');
 
-// array of questions to be run through for the manager on initation of the application
+// array of prompts to be run through for the manager on initation of the application
 const startManager = [
     {
         type: 'confirm', 
@@ -15,7 +15,28 @@ const startManager = [
     {
         type: 'input', 
         message: `What is the team manager's name?`, 
-        name: 'name'
+        name: 'name',
+    },
+    {
+        type: 'input', 
+        message: `What is the team manager's ID?`, 
+        name: 'ID',
+    },
+    {
+        type: 'input', 
+        message: `What is the team manager's email?`, 
+        name: 'email',
+    },
+    {
+        type: 'input', 
+        message: `What is the team manager's office number?`, 
+        name: 'office',
+    }, 
+    {
+        type: 'list', 
+        message: `Which type of team member would you like to add next?`, 
+        choices: ['Engineer', 'Intern', `I don't want to add any more members`],
+        name: 'continue',
     }
 ]
 // function to write the HTML file
