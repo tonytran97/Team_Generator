@@ -1,7 +1,7 @@
 const Manager = require("../lib/Manager");
 
 // manager object has the three following properties 
-const manager = new Manager('Luffy', 0, 'luffy@onepiece.com', 10); 
+const manager = new Manager('Luffy', 1, 'luffy@onepiece.com', 10); 
 
 describe("Manager", () => {
     describe("Manager instantiation", () => {
@@ -22,7 +22,7 @@ describe("Manager", () => {
        })
        describe('getID', () => {
        it('should return the id property from the manager object', () => {
-           const id = 0;
+           const id = 1;
            expect(manager.getID()).toEqual(id);
            })
        })

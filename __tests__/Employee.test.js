@@ -1,7 +1,7 @@
 const Employee = require('../lib/Employee');
 
 // employee object has the three following properties 
-const employee = new Employee('Zoro', 1, 'zoro@onepiece.com'); 
+const employee = new Employee('Zoro', 2, 'zoro@onepiece.com'); 
 
 describe('Employee', () => {
     describe('Employee instantiation', () => {
@@ -22,7 +22,7 @@ describe('Employee', () => {
     })
     describe('getID', () => {
     it('should return the id property from the employee object', () => {
-        const id = 1;
+        const id = 2;
         expect(employee.getID()).toEqual(id);
         })
     })
