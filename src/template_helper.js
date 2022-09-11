@@ -2,7 +2,7 @@
 const Manager = require('../lib/Manager');
 
 // function which provides the frame to build the HTML page
-function generateHTML(data) {
+function generateHTML(team) {
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -19,15 +19,7 @@ function generateHTML(data) {
         <header>My Team</header>
         <div class="card" style="width: 18rem">
       <div class="card-body text-bg-primary">
-        <h5 class="card-title">${data.name}</h5>
-        <p class="card-text"><i class="fa-solid fa-mug-hot"></i> Manager</p>
-      </div>
-      <div class="card ms-4" style="width: 12.5rem">
-        <ul class="list-group list-group-flush card">
-          <li class="list-group-item">ID: ${data.ID}</li>
-          <li class="list-group-item">Email: <a href="mailto:${data.email}">${data.email}</a></li>
-          <li class="list-group-item">Office number: ${data.office}</li>
-        </ul>
+        ${generateManagerCard(team)}
       </div>
     </div>
       </body>
@@ -35,4 +27,19 @@ function generateHTML(data) {
     `
 }
 
+// function that generates the manager card
+const generateManagerCard = manager => {
+  const newManager = new Manager(manager.name, manager.ID, manager.email, manager.office);
+    return `
+<h5 class="card-title">${newManager.getName()}</h5>
+        <p class="card-text"><i class="fa-solid fa-mug-hot"></i> ${newManager.getRole()}</p>
+      </div>
+      <div class="card ms-4" style="width: 12.5rem">
+        <ul class="list-group list-group-flush card">
+          <li class="list-group-item">ID: ${newManager.getID()}</li>
+          <li class="list-group-item">Email: <a href="mailto:${newManager.getEmail()}">${newManager.getEmail()}</a></li>
+          <li class="list-group-item">Office number: ${newManager.officeNumber}</li>
+        </ul>
+        `
+}
 module.exports = generateHTML;

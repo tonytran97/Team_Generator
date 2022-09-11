@@ -50,10 +50,10 @@ function writeToFile(fileName, data) {
 function init() {
     inquirer
     .prompt(startManager)
-    .then((response) => 
+    .then((manager) => {
     // test in production, will redirect to dist when application is fully complete
-    writeToFile('./index2.html', generateHTML(response)))
-}
+    writeToFile('./index2.html', generateHTML(manager))})
+};
 
 // function call to initalize the application
 init();
