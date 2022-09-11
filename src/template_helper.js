@@ -1,5 +1,6 @@
 // importing classes
 const Manager = require('../lib/Manager');
+const Engineer = require('../lib/Engineer');
 
 // function which provides the frame to build the HTML page
 function generateHTML(team) {
@@ -22,6 +23,11 @@ function generateHTML(team) {
         ${generateManagerCard(team)}
       </div>
     </div>
+    <div class="card" style="width: 18rem">
+      <div class="card-body text-bg-primary">
+        ${generateEngineerCard(team)}
+      </div>
+    </div>
       </body>
     </html>
     `
@@ -39,6 +45,22 @@ const generateManagerCard = manager => {
           <li class="list-group-item">ID: ${newManager.getID()}</li>
           <li class="list-group-item">Email: <a href="mailto:${newManager.getEmail()}">${newManager.getEmail()}</a></li>
           <li class="list-group-item">Office number: ${newManager.officeNumber}</li>
+        </ul>
+        `
+}
+
+// function that generates the engineer card
+const generateEngineerCard = engineer => {
+  const newEngineer = new Engineer(engineer.name, engineer.ID, engineer.email, engineer.github);
+    return `
+<h5 class="card-title">${newEngineer.getName()}</h5>
+        <p class="card-text"><i class="fa-solid fa-mug-hot"></i> ${newEngineer.getRole()}</p>
+      </div>
+      <div class="card ms-4" style="width: 12.5rem">
+        <ul class="list-group list-group-flush card">
+          <li class="list-group-item">ID: ${newEngineer.getID()}</li>
+          <li class="list-group-item">Email: <a href="mailto:${newEngineer.getEmail()}">${newEngineer.getEmail()}</a></li>
+          <li class="list-group-item">Github username: ${newEngineer.github}</li>
         </ul>
         `
 }
