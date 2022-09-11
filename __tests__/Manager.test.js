@@ -1,6 +1,6 @@
 const Manager = require("../lib/Manager");
 
-// manager object has the three following properties 
+// manager object has the four following properties 
 const manager = new Manager('Luffy', 1, 'luffy@onepiece.com', 10); 
 
 describe("Manager", () => {
@@ -13,7 +13,7 @@ describe("Manager", () => {
             expect('officeNumber' in manager).toEqual(true);
         })
     })
-    // the following three methods will be used to retrieve the respective properties that were passed in the parameters
+    // the following four methods will be used to retrieve the respective properties that were passed in the parameters
     describe('getNAME', () => {
         it('should return the name property from the manager object', () => {
            const name = 'Luffy';

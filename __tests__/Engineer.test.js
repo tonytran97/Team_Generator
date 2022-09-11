@@ -1,6 +1,6 @@
 const Engineer = require('../lib/Engineer');
 
-// engineer object has the three following properties 
+// engineer object has the four following properties 
 const engineer = new Engineer('Franky', 8, 'franky@onepiece.com', 'ironmanfranky'); 
 
 describe('Engineer', () => {
@@ -14,7 +14,7 @@ describe('Engineer', () => {
         })
 
     })
-// the following three methods will be used to retrieve the respective properties that were passed in the parameters
+// the following five methods will be used to retrieve the respective properties that were passed in the parameters
     describe('getNAME', () => {
      it('should return the name property from the engineer object', () => {
         const name = 'Franky';

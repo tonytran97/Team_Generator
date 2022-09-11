@@ -13,7 +13,7 @@ describe('Employee', () => {
         })
 
     })
-// the following three methods will be used to retrieve the respective properties that were passed in the parameters
+// the following four methods will be used to retrieve the respective properties that were passed in the parameters
     describe('getNAME', () => {
      it('should return the name property from the employee object', () => {
         const name = 'Zoro';
