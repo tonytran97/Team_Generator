@@ -2,8 +2,14 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+
 // template needed for this application
 const generateHTML = require('./src/template_helper');
+
+// storage of each member of the team, used to loop through the array to generate multiple cards in the template
+bucket = [];
 
 // array of prompts to be run through for the manager on initation of the application
 const startManager = () => {
@@ -42,7 +48,10 @@ const startManager = () => {
 ])
 .then((manager) => {
     // switch statement to allow for continuation of the application if Engineer is selected, else write the index file
+    const newManager = new Manager(manager.name, manager.ID, manager.email, manager.office);
+    bucket.push(newManager);
     switch(manager.continue) {
+        // const newManager = new Manager(manager.name, manager.ID, manager.email, manager.office);
         case 'Engineer': 
         startEngineer();
         break;
@@ -83,6 +92,8 @@ const startEngineer = () => {
 ])
 .then((engineer) => {
     // switch statement to allow for continuation of the application if Engineer is selected, else write the index file
+    const newEngineer = new Engineer(engineer.name, engineer.ID, engineer.email, engineer.github);
+    bucket.push(newEngineer);
     switch(engineer.continue) {
         case 'Engineer': 
         startEngineer();
@@ -97,6 +108,9 @@ function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, (err) =>
        err ? console.error(err) : console.log('HTML file has been created')
      );}
+
+// exporting the bucket array to the template
+module.exports = bucket;
 
 // function call to initalize the application
 startManager();
