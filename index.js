@@ -10,7 +10,7 @@ const generateHTML = require('./src/template_helper');
 
 // storage of each member of the team, used to loop through the array to generate multiple cards in the template
 bucket = [];
-const fullBucket = bucket;
+// const fullBucket = bucket;
 
 // array of prompts to be run through for the manager on initation of the application
 const startManager = () => {
@@ -28,7 +28,7 @@ const startManager = () => {
         {
             type: 'input', 
             message: `What is the team manager's ID?`, 
-            name: 'ID',
+            name: 'id',
         },
         {
             type: 'input', 
@@ -51,6 +51,8 @@ const startManager = () => {
     // switch statement to allow for continuation of the application if Engineer is selected, else write the index file
     const newManager = new Manager(manager.name, manager.ID, manager.email, manager.office);
     bucket.push(newManager);
+    console.log(bucket);
+    // console.log(manager);
     switch(manager.continue) {
         // const newManager = new Manager(manager.name, manager.ID, manager.email, manager.office);
         case 'Engineer': 
@@ -59,7 +61,6 @@ const startManager = () => {
         default: writeToFile('./index2.html', generateHTML(manager))
     }
     })
-    return fullBucket;
 }
 
 // prompts for the engineer
@@ -112,7 +113,7 @@ function writeToFile(fileName, data) {
      );}
 
 // exporting the bucket array to the template
-module.exports = fullBucket;
+module.exports = {bucket};
 
 // function call to initalize the application
 startManager();
