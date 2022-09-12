@@ -49,16 +49,16 @@ const startManager = () => {
 ])
 .then((manager) => {
     // switch statement to allow for continuation of the application if Engineer is selected, else write the index file
-    const newManager = new Manager(manager.name, manager.ID, manager.email, manager.office);
+    const newManager = new Manager(manager.name, manager.id, manager.email, manager.office);
     bucket.push(newManager);
-    console.log(bucket);
+    // console.log(bucket);
     // console.log(manager);
     switch(manager.continue) {
         // const newManager = new Manager(manager.name, manager.ID, manager.email, manager.office);
         case 'Engineer': 
         startEngineer();
         break;
-        default: writeToFile('./index2.html', generateHTML(manager))
+        default: writeToFile('./index2.html', generateHTML(bucket))
     }
     })
 }
@@ -74,7 +74,7 @@ const startEngineer = () => {
     {
         type: 'input', 
         message: `What is the engineer's ID?`, 
-        name: 'ID',
+        name: 'id',
     },
     {
         type: 'input', 
@@ -95,13 +95,14 @@ const startEngineer = () => {
 ])
 .then((engineer) => {
     // switch statement to allow for continuation of the application if Engineer is selected, else write the index file
-    const newEngineer = new Engineer(engineer.name, engineer.ID, engineer.email, engineer.github);
+    const newEngineer = new Engineer(engineer.name, engineer.id, engineer.email, engineer.github);
     bucket.push(newEngineer);
+    console.log(bucket);
     switch(engineer.continue) {
         case 'Engineer': 
         startEngineer();
         break;
-        default: writeToFile('./index2.html', generateHTML(engineer))
+        default: writeToFile('./index2.html', generateHTML(this.bucket))
     }
     })
 }
@@ -113,7 +114,7 @@ function writeToFile(fileName, data) {
      );}
 
 // exporting the bucket array to the template
-module.exports = {bucket};
+// module.exports = {bucket};
 
 // function call to initalize the application
 startManager();

@@ -4,11 +4,11 @@ const Engineer = require('../lib/Engineer');
 
 // importing the array built in the index
 // let employeeArray = require('../index');
-import {bucket} from '../index';
+// import {bucket} from '../index';
 
 // function which provides the frame to build the HTML page
 function generateHTML(team) {
-  console.log(bucket);
+  // console.log(team);
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -31,6 +31,7 @@ function generateHTML(team) {
 
 // function that generates the manager card
 const generateManagerCard = manager => {
+  // console.log(manager);
   const newManager = new Manager(manager.name, manager.id, manager.email, manager.office);
     return `
     <div class="card" style="width: 18rem">
@@ -50,42 +51,42 @@ const generateManagerCard = manager => {
 }
 
 // function that generates the engineer card
-// const generateEngineerCard = engineer => {
-//   const newEngineer = new Engineer(engineer.name, engineer.ID, engineer.email, engineer.github);
-//     return `
-//     <div class="card" style="width: 18rem">
-//     <div class="card-body text-bg-primary">
-// <h5 class="card-title">${newEngineer.getName()}</h5>
-//       <p class="card-text"><i class="fa-solid fa-mug-hot"></i> ${newEngineer.getRole()}</p>
-//     </div>
-//     <div class="card ms-4" style="width: 12.5rem">
-//       <ul class="list-group list-group-flush card">
-//         <li class="list-group-item">ID: ${newEngineer.getID()}</li>
-//         <li class="list-group-item">Email: <a href="mailto:${newEngineer.getEmail()}">${newEngineer.getEmail()}</a></li>
-//         <li class="list-group-item">GitHub: ${newEngineer.getGitHub()}</li>
-//       </ul>
-//       </div>
-//   </div>
-//       `
-// }
+const generateEngineerCard = engineer => {
+  const newEngineer = new Engineer(engineer.name, engineer.id, engineer.email, engineer.github);
+    return `
+    <div class="card" style="width: 18rem">
+    <div class="card-body text-bg-primary">
+<h5 class="card-title">${newEngineer.getName()}</h5>
+      <p class="card-text"><i class="fa-solid fa-mug-hot"></i> ${newEngineer.getRole()}</p>
+    </div>
+    <div class="card ms-4" style="width: 12.5rem">
+      <ul class="list-group list-group-flush card">
+        <li class="list-group-item">ID: ${newEngineer.getID()}</li>
+        <li class="list-group-item">Email: <a href="mailto:${newEngineer.getEmail()}">${newEngineer.getEmail()}</a></li>
+        <li class="list-group-item">GitHub: ${newEngineer.getGitHub()}</li>
+      </ul>
+      </div>
+  </div>
+      `
+}
 
 // function built to loop through the length of an array and build cards based off that, avoids the overlapping on inputs from different members
 const employeeBucket = (team) => {
   // console.log(team);
   let testRun = [];
-  // for(let i = 0; i < employeeArray.length; i++)
-  const newManager = new Manager(team.name, team.id, team.email, team.office);
-  // console.log(newManager);
-  switch (newManager.getRole()) {
+  team.forEach(teamMember => {switch (teamMember.getRole()) {
     case 'Manager':
-      // const newManager = new Manager(team.name, team.ID, team.email, team.office);
+      // console.log(teamMember.getRole());
+      const newManager = new Manager(teamMember.name, teamMember.id, teamMember.email, teamMember.office);
+      // console.log(newManager);
       testRun.push(generateManagerCard(newManager));
       break;
-      // case 'Engineer':
-      // const newEngineer = new Engineer(engineer.name, engineer.ID, engineer.email, engineer.github);
-      // generateEngineerCard(newEngineer);
-      // break;
+    case 'Engineer':
+    const newEngineer = new Engineer(teamMember.name, teamMember.id, teamMember.email, teamMember.github);
+    generateEngineerCard(newEngineer);
+    break;
   }
+  });
   return testRun;
 }
 module.exports = generateHTML;
