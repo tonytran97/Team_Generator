@@ -4,13 +4,13 @@ const fs = require('fs');
 
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
 
 // template needed for this application
 const generateHTML = require('./src/template_helper');
 
 // storage of each member of the team, used to loop through the array to generate multiple cards in the template
 bucket = [];
-// const fullBucket = bucket;
 
 // array of prompts to be run through for the manager on initation of the application
 const startManager = () => {
@@ -58,6 +58,9 @@ const startManager = () => {
         case 'Engineer': 
         startEngineer();
         break;
+        case 'Intern': 
+        startIntern();
+        break;
         default: writeToFile('./index2.html', generateHTML(bucket))
     }
     })
@@ -101,6 +104,56 @@ const startEngineer = () => {
     switch(engineer.continue) {
         case 'Engineer': 
         startEngineer();
+        break;
+        case 'Intern': 
+        startIntern();
+        break;
+        default: writeToFile('./index2.html', generateHTML(bucket))
+    }
+    })
+}
+
+// prompts for the intern
+const startIntern = () => {
+    inquirer.prompt([
+    {
+        type: 'input', 
+        message: `What is the intern's name?`, 
+        name: 'name',
+    },
+    {
+        type: 'input', 
+        message: `What is the intern's ID?`, 
+        name: 'id',
+    },
+    {
+        type: 'input', 
+        message: `What is the intern's email?`, 
+        name: 'email',
+    },
+    {
+        type: 'input', 
+        message: `What is the intern's school?`, 
+        name: 'school',
+    }, 
+    {
+        type: 'list', 
+        message: `Which type of team member would you like to add next?`, 
+        choices: ['Engineer', 'Intern', `I don't want to add any more members`],
+        name: 'continue',
+    }
+])
+.then((intern) => {
+    // switch statement to allow for continuation of the application if Engineer is selected, else write the index file
+    const newIntern = new Intern(intern.name, intern.id, intern.email, intern.school);
+    bucket.push(newIntern);
+    console.log(bucket);
+    switch(intern.continue) {
+        case 'Engineer': 
+        startEngineer();
+        break;
+        case 'Intern': 
+        startIntern();
         break;
         default: writeToFile('./index2.html', generateHTML(bucket))
     }

@@ -1,6 +1,7 @@
 // importing classes
 const Manager = require('../lib/Manager');
 const Engineer = require('../lib/Engineer');
+const Intern = require('../lib/Intern');
 
 // function which provides the frame to build the HTML page
 function generateHTML(team) {
@@ -66,6 +67,26 @@ const generateEngineerCard = engineer => {
       `
 }
 
+// function that generates the intern card
+const generateInternCard = intern => {
+  const newIntern = new Intern(intern.name, intern.id, intern.email, intern.school);
+    return `
+    <div class="card" style="width: 18rem">
+    <div class="card-body text-bg-primary">
+<h5 class="card-title">${newIntern.getName()}</h5>
+      <p class="card-text"><i class="fa-solid fa-mug-hot"></i> ${newIntern.getRole()}</p>
+    </div>
+    <div class="card ms-4" style="width: 12.5rem">
+      <ul class="list-group list-group-flush card">
+        <li class="list-group-item">ID: ${newIntern.getID()}</li>
+        <li class="list-group-item">Email: <a href="mailto:${newIntern.getEmail()}">${newIntern.getEmail()}</a></li>
+        <li class="list-group-item">School: ${newIntern.getSchool()}</li>
+      </ul>
+      </div>
+  </div>
+      `
+}
+
 // function built to loop through the array that was passed through to generate new cards
 const employeeBucket = (team) => {
   console.log(team);
@@ -80,6 +101,10 @@ const employeeBucket = (team) => {
     case 'Engineer':
     const newEngineer = new Engineer(teamMember.name, teamMember.id, teamMember.email, teamMember.github);
     testRun.push(generateEngineerCard(newEngineer));
+    break;
+    case 'Intern':
+    const newIntern = new Intern(teamMember.name, teamMember.id, teamMember.email, teamMember.school);
+    testRun.push(generateInternCard(newIntern));
     break;
   }
   });
