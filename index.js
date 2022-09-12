@@ -2,6 +2,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
+// classes needed for this application
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
@@ -48,7 +49,7 @@ const startManager = () => {
         }
 ])
 .then((manager) => {
-    // switch statement to allow for continuation of the application if Engineer is selected, else write the index file
+    // switch statement to allow for continuation of the application if the user decides to add another employee, else write the index file
     const newManager = new Manager(manager.name, manager.id, manager.email, manager.office);
     bucket.push(newManager);
     // console.log(bucket);
@@ -97,10 +98,10 @@ const startEngineer = () => {
     }
 ])
 .then((engineer) => {
-    // switch statement to allow for continuation of the application if Engineer is selected, else write the index file
+    // switch statement to allow for continuation of the application if the user decides to add another employee, else write the index file
     const newEngineer = new Engineer(engineer.name, engineer.id, engineer.email, engineer.github);
     bucket.push(newEngineer);
-    console.log(bucket);
+    // console.log(bucket);
     switch(engineer.continue) {
         case 'Engineer': 
         startEngineer();
@@ -144,10 +145,10 @@ const startIntern = () => {
     }
 ])
 .then((intern) => {
-    // switch statement to allow for continuation of the application if Engineer is selected, else write the index file
+    // switch statement to allow for continuation of the application if the user decides to add another employee, else write the index file
     const newIntern = new Intern(intern.name, intern.id, intern.email, intern.school);
     bucket.push(newIntern);
-    console.log(bucket);
+    // console.log(bucket);
     switch(intern.continue) {
         case 'Engineer': 
         startEngineer();

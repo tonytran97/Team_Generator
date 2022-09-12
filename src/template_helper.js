@@ -34,7 +34,7 @@ const generateManagerCard = manager => {
     <div class="card" style="width: 18rem">
       <div class="card-body text-bg-primary">
 <h5 class="card-title">${newManager.getName()}</h5>
-        <p class="card-text"><i class="fa-solid fa-mug-hot"></i> ${newManager.getRole()}</p>
+        <p class="card-text"><i class="fa-solid fa-skull"></i> ${newManager.getRole()}</p>
       </div>
       <div class="card ms-4" style="width: 12.5rem">
         <ul class="list-group list-group-flush card">
@@ -54,13 +54,13 @@ const generateEngineerCard = engineer => {
     <div class="card" style="width: 18rem">
     <div class="card-body text-bg-primary">
 <h5 class="card-title">${newEngineer.getName()}</h5>
-      <p class="card-text"><i class="fa-solid fa-mug-hot"></i> ${newEngineer.getRole()}</p>
+      <p class="card-text"><i class="fa-solid fa-screwdriver-wrench"></i> ${newEngineer.getRole()}</p>
     </div>
     <div class="card ms-4" style="width: 12.5rem">
       <ul class="list-group list-group-flush card">
         <li class="list-group-item">ID: ${newEngineer.getID()}</li>
         <li class="list-group-item">Email: <a href="mailto:${newEngineer.getEmail()}">${newEngineer.getEmail()}</a></li>
-        <li class="list-group-item">GitHub: ${newEngineer.getGitHub()}</li>
+        <li class="list-group-item">GitHub: <a href="https://github.com/${newEngineer.getGitHub()}">${newEngineer.getGitHub()}</a></li>
       </ul>
       </div>
   </div>
@@ -74,7 +74,7 @@ const generateInternCard = intern => {
     <div class="card" style="width: 18rem">
     <div class="card-body text-bg-primary">
 <h5 class="card-title">${newIntern.getName()}</h5>
-      <p class="card-text"><i class="fa-solid fa-mug-hot"></i> ${newIntern.getRole()}</p>
+      <p class="card-text"><i class="fa-solid fa-glasses"></i> ${newIntern.getRole()}</p>
     </div>
     <div class="card ms-4" style="width: 12.5rem">
       <ul class="list-group list-group-flush card">
@@ -89,25 +89,29 @@ const generateInternCard = intern => {
 
 // function built to loop through the array that was passed through to generate new cards
 const employeeBucket = (team) => {
-  console.log(team);
-  let testRun = [];
+  // console.log(team);
+  // deck holds the cards that are generated
+  let deck = [];
+  // switch statement that calls the getRole method and uses that result to run through the cases until there is a match
+  // if there is a match, then it will execute the code and then break out
   team.forEach(teamMember => {switch (teamMember.getRole()) {
     case 'Manager':
       // console.log(teamMember.getRole());
       const newManager = new Manager(teamMember.name, teamMember.id, teamMember.email, teamMember.office);
       // console.log(newManager);
-      testRun.push(generateManagerCard(newManager));
+      deck.push(generateManagerCard(newManager));
       break;
     case 'Engineer':
     const newEngineer = new Engineer(teamMember.name, teamMember.id, teamMember.email, teamMember.github);
-    testRun.push(generateEngineerCard(newEngineer));
+    deck.push(generateEngineerCard(newEngineer));
     break;
     case 'Intern':
     const newIntern = new Intern(teamMember.name, teamMember.id, teamMember.email, teamMember.school);
-    testRun.push(generateInternCard(newIntern));
+    deck.push(generateInternCard(newIntern));
     break;
   }
   });
-  return testRun;
+  // gets rid of the commas between the cards
+  return deck.join('');
 }
 module.exports = generateHTML;
