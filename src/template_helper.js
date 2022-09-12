@@ -2,10 +2,6 @@
 const Manager = require('../lib/Manager');
 const Engineer = require('../lib/Engineer');
 
-// importing the array built in the index
-// let employeeArray = require('../index');
-// import {bucket} from '../index';
-
 // function which provides the frame to build the HTML page
 function generateHTML(team) {
   // console.log(team);
@@ -70,9 +66,9 @@ const generateEngineerCard = engineer => {
       `
 }
 
-// function built to loop through the length of an array and build cards based off that, avoids the overlapping on inputs from different members
+// function built to loop through the array that was passed through to generate new cards
 const employeeBucket = (team) => {
-  // console.log(team);
+  console.log(team);
   let testRun = [];
   team.forEach(teamMember => {switch (teamMember.getRole()) {
     case 'Manager':
@@ -83,7 +79,7 @@ const employeeBucket = (team) => {
       break;
     case 'Engineer':
     const newEngineer = new Engineer(teamMember.name, teamMember.id, teamMember.email, teamMember.github);
-    generateEngineerCard(newEngineer);
+    testRun.push(generateEngineerCard(newEngineer));
     break;
   }
   });

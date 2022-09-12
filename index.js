@@ -102,7 +102,7 @@ const startEngineer = () => {
         case 'Engineer': 
         startEngineer();
         break;
-        default: writeToFile('./index2.html', generateHTML(this.bucket))
+        default: writeToFile('./index2.html', generateHTML(bucket))
     }
     })
 }
@@ -112,9 +112,6 @@ function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, (err) =>
        err ? console.error(err) : console.log('HTML file has been created')
      );}
-
-// exporting the bucket array to the template
-// module.exports = {bucket};
 
 // function call to initalize the application
 startManager();
