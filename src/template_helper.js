@@ -4,6 +4,7 @@ const Engineer = require('../lib/Engineer');
 
 // importing the array built in the index
 let employeeArray = require('../index');
+// console.log(employeeArray);
 
 // function which provides the frame to build the HTML page
 function generateHTML(team) {

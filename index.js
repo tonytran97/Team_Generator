@@ -10,6 +10,7 @@ const generateHTML = require('./src/template_helper');
 
 // storage of each member of the team, used to loop through the array to generate multiple cards in the template
 bucket = [];
+const fullBucket = bucket;
 
 // array of prompts to be run through for the manager on initation of the application
 const startManager = () => {
@@ -58,6 +59,7 @@ const startManager = () => {
         default: writeToFile('./index2.html', generateHTML(manager))
     }
     })
+    return fullBucket;
 }
 
 // prompts for the engineer
@@ -110,7 +112,7 @@ function writeToFile(fileName, data) {
      );}
 
 // exporting the bucket array to the template
-module.exports = bucket;
+module.exports = fullBucket;
 
 // function call to initalize the application
 startManager();
