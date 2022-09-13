@@ -4,7 +4,7 @@
 
 header {
     text-align: center;
-    background-color: #7da2a9;
+    background-color: #6f9ca5;
 }
 
 body {
@@ -22,11 +22,10 @@ p, ul {
 .card {
     margin: auto;
     background: rgb(232, 231, 236);
-    /* align-content: center; */
 }
 
 .margin {
-    margin-top: 15rem;
+    margin-top: 8rem;
     box-shadow: 5px 3px 5px 3px;
 }
 

@@ -19,9 +19,11 @@ function generateHTML(team) {
       </head>
       <body>
         <header class="display-1">Introducing our Crew</header>
+        <div class="container">
         <div class="row">
         ${employeeBucket(team)}
-        <div>
+        </div>
+        </div>
       </body>
     </html>
     `

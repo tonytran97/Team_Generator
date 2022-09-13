@@ -160,7 +160,7 @@ const startIntern = () => {
 // function to write the HTML file
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, (err) =>
-       err ? console.error(err) : console.log('HTML file has been created')
+       err ? console.error(err) : console.log('The Team Page has been created, it can be found in the dist directory')
      );}
 
 // function call to initalize the application
