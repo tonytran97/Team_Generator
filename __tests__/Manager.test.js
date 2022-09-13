@@ -10,7 +10,7 @@ describe("Manager", () => {
             expect('name' in manager).toEqual(true);
             expect('id' in manager).toEqual(true);
             expect('email' in manager).toEqual(true);
-            expect('officeNumber' in manager).toEqual(true);
+            expect('office' in manager).toEqual(true);
         })
     })
     // the following four methods will be used to retrieve the respective properties that were passed in the parameters

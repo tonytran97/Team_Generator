@@ -5,7 +5,6 @@ const Intern = require('../lib/Intern');
 
 // function which provides the frame to build the HTML page
 function generateHTML(team) {
-  // console.log(team);
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -19,8 +18,10 @@ function generateHTML(team) {
         <link rel="stylesheet" href="./styles.css" />
       </head>
       <body>
-        <header>My Team</header>
+        <header class="display-1">Introducing our Crew</header>
+        <div class="row">
         ${employeeBucket(team)}
+        <div>
       </body>
     </html>
     `
@@ -28,11 +29,10 @@ function generateHTML(team) {
 
 // function that generates the manager card
 const generateManagerCard = manager => {
-  // console.log(manager);
   const newManager = new Manager(manager.name, manager.id, manager.email, manager.office);
     return `
-    <div class="card" style="width: 18rem">
-      <div class="card-body text-bg-primary">
+    <div class="card margin" style="width: 18rem">
+      <div class="card-body">
 <h5 class="card-title">${newManager.getName()}</h5>
         <p class="card-text"><i class="fa-solid fa-skull"></i> ${newManager.getRole()}</p>
       </div>
@@ -51,8 +51,8 @@ const generateManagerCard = manager => {
 const generateEngineerCard = engineer => {
   const newEngineer = new Engineer(engineer.name, engineer.id, engineer.email, engineer.github);
     return `
-    <div class="card" style="width: 18rem">
-    <div class="card-body text-bg-primary">
+    <div class="card margin" style="width: 18rem">
+    <div class="card-body">
 <h5 class="card-title">${newEngineer.getName()}</h5>
       <p class="card-text"><i class="fa-solid fa-screwdriver-wrench"></i> ${newEngineer.getRole()}</p>
     </div>
@@ -71,8 +71,8 @@ const generateEngineerCard = engineer => {
 const generateInternCard = intern => {
   const newIntern = new Intern(intern.name, intern.id, intern.email, intern.school);
     return `
-    <div class="card" style="width: 18rem">
-    <div class="card-body text-bg-primary">
+    <div class="card margin" style="width: 18rem">
+    <div class="card-body">
 <h5 class="card-title">${newIntern.getName()}</h5>
       <p class="card-text"><i class="fa-solid fa-glasses"></i> ${newIntern.getRole()}</p>
     </div>
@@ -89,16 +89,13 @@ const generateInternCard = intern => {
 
 // function built to loop through the array that was passed through to generate new cards
 const employeeBucket = (team) => {
-  // console.log(team);
   // deck holds the cards that are generated
   let deck = [];
   // switch statement that calls the getRole method and uses that result to run through the cases until there is a match
   // if there is a match, then it will execute the code and then break out
   team.forEach(teamMember => {switch (teamMember.getRole()) {
     case 'Manager':
-      // console.log(teamMember.getRole());
       const newManager = new Manager(teamMember.name, teamMember.id, teamMember.email, teamMember.office);
-      // console.log(newManager);
       deck.push(generateManagerCard(newManager));
       break;
     case 'Engineer':

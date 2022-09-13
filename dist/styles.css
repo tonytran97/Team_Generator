@@ -1,3 +1,39 @@
+* {
+    font-family: serif;
+}
+
 header {
     text-align: center;
+    background-color: #7da2a9;
+}
+
+body {
+    background: #F7F7F7;
+}
+
+h5 {
+    font-size: 1.6rem;
+}
+
+p, ul {
+    font-size: 1.2rem;
+}
+
+.card {
+    margin: auto;
+    background: rgb(232, 231, 236);
+    /* align-content: center; */
+}
+
+.margin {
+    margin-top: 15rem;
+    box-shadow: 5px 3px 5px 3px;
+}
+
+.card-body {
+    background-color: rgb(146, 143, 156);
+}
+
+.list-group {
+    margin: 0;
 }
